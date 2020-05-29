@@ -114,7 +114,8 @@ class SimpleViewModelTestAgain {
     /**
      * Fixes [SimpleViewModelTest.test live data post value fails] in a different way than
      * [SimpleViewModelTest.test live data post value]. Rather than using [ShadowLooper.runMainLooperToNextTask] to
-     * advance the system clock in order to process the [LiveData.postValue] synchronously, we use [InstantTaskExecutorRule].
+     * advance the system clock in order to process the [LiveData.postValue], we use [InstantTaskExecutorRule]
+     * which will process [LiveData.postValue] synchronously.
      */
     @Test
     fun `test live data post value succeeds with InstantTaskExecutorRule`() {

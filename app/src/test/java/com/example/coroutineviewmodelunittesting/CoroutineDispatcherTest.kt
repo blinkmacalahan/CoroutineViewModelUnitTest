@@ -15,12 +15,11 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * A bunch of tests to help understand how [runBlockingTest] and [runBlocking] works with coroutines and how [delay]
+ * can cause troubles.
  */
 @RunWith(RobolectricTestRunner::class)
-class ExampleUnitTest {
+class CoroutineDispatcherTest {
 
     @After
     fun cleanup() {
