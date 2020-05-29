@@ -1,6 +1,7 @@
 package com.example.coroutineviewmodelunittesting
 
 import android.os.Handler
+import android.os.Looper
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
@@ -11,7 +12,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 class MyAdder(val customCoroutineScope: CustomCoroutineScope = CustomCoroutineScope(DefaultDispatcherProvider.main())) {
-    private val handler = Handler()
+    // Always have this on MainLooper and prevent it getting set to whatever looper this object is instantiated from
+    private val handler = Handler(Looper.getMainLooper())
     private var runnable: Runnable? = null
 
     inner class SumRunnable(
@@ -52,6 +54,7 @@ class MyAdder(val customCoroutineScope: CustomCoroutineScope = CustomCoroutineSc
             delay(100)
             sum += i
         }
+        println("addUpTo result = $sum")
         return sum
     }
 
